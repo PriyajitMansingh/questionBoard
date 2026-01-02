@@ -1,4 +1,14 @@
 <div class="app-layout">
   <app-sidebar></app-sidebar>
-  <app-card-list></app-card-list>
+
+  <div class="main-content">
+    <!-- EMPTY STATE -->
+    <div *ngIf="!selectedCategory" class="empty-state">
+      <h2>Select a category to view</h2>
+      <p>Please choose a category from the sidebar</p>
+    </div>
+
+    <!-- CARD LIST -->
+    <app-card-list *ngIf="selectedCategory"></app-card-list>
+  </div>
 </div>

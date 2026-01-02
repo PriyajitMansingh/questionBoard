@@ -1,6 +1,39 @@
-<div class="sidebar">
-<p (click)="select('frontend')">Frontend</p>
-<p (click)="select('angular')">Angular</p>
-<p (click)="select('component')">Component</p>
+<div class="sidebar" [class.closed]="!isOpen">
+  <!-- HEADER -->
+  <div class="sidebar-header">
+    <span *ngIf="isOpen">Question Board</span>
+    <button class="toggle-btn" (click)="toggleSidebar()">☰</button>
+  </div>
 
+  <!-- MENU -->
+  <div class="menu">
+    <div *ngFor="let item of menu">
+      <!-- MAIN ITEM -->
+      <div
+        class="menu-item"
+        [class.active]="selectedCategory === item.key"
+        (click)="item.children ? toggleSubMenu(item.key) : select(item.key)"
+      >
+        {{ item.name }}
+        <span *ngIf="item.children && isOpen">
+          {{ openSubMenu === item.key ? "▾" : "▸" }}
+        </span>
+      </div>
+
+      <!-- SUB MENU -->
+      <div
+        class="submenu"
+        *ngIf="item.children && openSubMenu === item.key && isOpen"
+      >
+        <div
+          class="submenu-item"
+          *ngFor="let child of item.children"
+          [class.active]="selectedCategory === child.key"
+          (click)="select(child.key)"
+        >
+          {{ child.name }}
+        </div>
+      </div>
+    </div>
+  </div>
 </div>

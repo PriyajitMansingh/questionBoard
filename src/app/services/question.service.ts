@@ -1,10 +1,9 @@
 import { Injectable } from '@angular/core';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class QuestionService {
-
   // 🔹 This is the main data source (mock data)
   private questions = [
     {
@@ -12,29 +11,43 @@ export class QuestionService {
       title: 'What is Angular?',
       description: 'Explain Angular framework',
       category: 'frontend',
-      assignedTo: null   // will store user object later
+      assignedTo: null, // will store user object later
     },
     {
       id: 2,
       title: 'What is Angular Component?',
       description: 'Explain component concept',
       category: 'component',
-      assignedTo: null
+      assignedTo: null,
     },
     {
       id: 3,
       title: 'What is TypeScript?',
       description: 'Explain TypeScript basics',
       category: 'angular',
-      assignedTo: null
+      assignedTo: null,
     },
     {
       id: 4,
       title: 'What is TypeScript?',
       description: 'Explain TypeScript basics',
       category: 'angular',
-      assignedTo: null
-    }
+      assignedTo: null,
+    },
+    {
+      id: 5,
+      title: 'What are Angular Services?',
+      description: 'Explain services and DI',
+      category: 'service',
+      assignedTo: null,
+    },
+    {
+      id: 6,
+      title: 'What are React Hooks?',
+      description: 'Explain useState and useEffect',
+      category: 'hooks',
+      assignedTo: null,
+    },
   ];
 
   constructor() {}
@@ -51,6 +64,6 @@ export class QuestionService {
 
   // 🔹 Delete a question
   deleteQuestion(question: any) {
-    this.questions = this.questions.filter(q => q !== question);
+    this.questions = this.questions.filter((q) => q !== question);
   }
 }
