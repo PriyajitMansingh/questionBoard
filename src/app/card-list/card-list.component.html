@@ -1,1 +1,13 @@
-<app-question-card></app-question-card>
+<div class="content">
+  <div class="card-container">
+    <app-question-card
+      *ngFor="let q of filteredQuestions"
+      [title]="q.title"
+      [description]="q.description"
+      [assignedTo]="q.assignedTo"
+      (assignClicked)="onAssign(q)"
+      (editClicked)="onEdit(q)"
+      (deleteClicked)="onDelete(q)">
+    </app-question-card>
+  </div>
+</div>

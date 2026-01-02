@@ -1,15 +1,28 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, Output, EventEmitter } from '@angular/core';
 
 @Component({
   selector: 'app-question-card',
   templateUrl: './question-card.component.html',
   styleUrls: ['./question-card.component.css']
 })
-export class QuestionCardComponent implements OnInit {
+export class QuestionCardComponent {
 
-  constructor() { }
+  @Input() title!: string;
+  @Input() description!: string;
+  @Input() assignedTo: any = null;
 
-  ngOnInit(): void {
+
+  @Output() assignClicked = new EventEmitter<void>();
+  @Output() editClicked = new EventEmitter<void>();
+@Output() deleteClicked = new EventEmitter<void>();
+
+  onAssign() {
+    this.assignClicked.emit();
   }
-
+  onEdit(){
+    this.editClicked.emit();
+  }
+  onDelete(){
+    this.deleteClicked.emit();
+  }
 }

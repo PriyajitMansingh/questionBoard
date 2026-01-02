@@ -5,5 +5,13 @@ import { Injectable } from '@angular/core';
 })
 export class UserService {
 
-  constructor() { }
+  private users = [
+    { id: 1, name: 'Rahul' },
+    { id: 2, name: 'Priya' },
+    { id: 3, name: 'Amit' }
+  ];
+
+  getUsers() {
+    return this.users;
+  }
 }
