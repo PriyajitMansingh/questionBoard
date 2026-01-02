@@ -1,15 +1,17 @@
 <div class="card">
-  <h3>{{ title }}</h3>
-  <p>{{ description }}</p>
+  <div class="card-header">
+    <h3>{{ title }}</h3>
+    <span class="status"
+      [class.assigned]="assignedTo">
+      {{ assignedTo ? ('Assigned to ' + assignedTo.name) : 'Unassigned' }}
+    </span>
+  </div>
 
-  <p>
-    Status:
-     <strong>
-    {{ assignedTo ? ('Assigned to ' + assignedTo.name) : 'Unassigned' }}
-  </strong>
-  </p>
+  <p class="description">{{ description }}</p>
 
-  <button (click)="onAssign()">Assign</button>
-  <button (click)="onEdit()">Edit</button>
-  <button (click)="onDelete()">Delete</button>
+  <div class="actions">
+    <button class="btn assign" (click)="onAssign()">Assign</button>
+    <button class="btn edit" (click)="onEdit()">Edit</button>
+    <button class="btn delete" (click)="onDelete()">Delete</button>
+  </div>
 </div>

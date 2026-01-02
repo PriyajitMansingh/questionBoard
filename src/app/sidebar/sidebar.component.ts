@@ -11,7 +11,6 @@ export class SidebarComponent implements OnInit {
   constructor(private sidebarService: SidebarService) {}
 
   select(category: string) {
-   
     this.sidebarService.selectCategory(category);
   }
 
