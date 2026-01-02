@@ -1,30 +1,25 @@
-<div class="sidebar" [class.closed]="!isOpen">
+<div class="sidebar">
   <!-- HEADER -->
   <div class="sidebar-header">
-    <span *ngIf="isOpen">Question Board</span>
-    <button class="toggle-btn" (click)="toggleSidebar()">☰</button>
+    <span class="title">Question Board</span>
   </div>
 
   <!-- MENU -->
   <div class="menu">
     <div *ngFor="let item of menu">
-      <!-- MAIN ITEM -->
       <div
         class="menu-item"
         [class.active]="selectedCategory === item.key"
         (click)="item.children ? toggleSubMenu(item.key) : select(item.key)"
       >
-        {{ item.name }}
-        <span *ngIf="item.children && isOpen">
+        <span>{{ item.name }}</span>
+        <span *ngIf="item.children">
           {{ openSubMenu === item.key ? "▾" : "▸" }}
         </span>
       </div>
 
       <!-- SUB MENU -->
-      <div
-        class="submenu"
-        *ngIf="item.children && openSubMenu === item.key && isOpen"
-      >
+      <div class="submenu" *ngIf="item.children && openSubMenu === item.key">
         <div
           class="submenu-item"
           *ngFor="let child of item.children"
